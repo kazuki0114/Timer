@@ -1,0 +1,8 @@
+# Original high-resolution source image
+image/timer.png
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

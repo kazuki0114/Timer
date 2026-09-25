@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
+  <title>Focus Timer</title>
+  <link rel="icon" type="image/jpeg" href="image/timer-icon.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Focus Timer ホーム">
+        <img class="brand-icon" src="image/timer-icon.jpg" alt="" width="36" height="36">
+        <span>FOCUS TIMER</span>
+      </a>
+      <button class="sound-button" id="soundButton" type="button" aria-label="通知音をオフにする" aria-pressed="true">
+        <svg class="sound-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Zm4.5 3.5a5 5 0 0 1 0 7M18 6a8 8 0 0 1 0 12"/></svg>
+        <svg class="sound-off" viewBox="0 0 24 24" aria-hidden="true"><path d="m11 5-5 4H3v6h3l5 4V5Zm5 4 5 5m0-5-5 5"/></svg>
+      </button>
+    </header>
+
+    <nav class="mode-switch" aria-label="タイマーの種類">
+      <button class="mode-button active" data-mode="countdown" type="button" aria-pressed="true">カウントダウン</button>
+      <button class="mode-button" data-mode="stopwatch" type="button" aria-pressed="false">ストップウォッチ</button>
+    </nav>
+
+    <section class="timer-card" aria-labelledby="timerTitle">
+      <div class="card-heading">
+        <p class="eyebrow" id="timerTitle">COUNTDOWN TIMER</p>
+        <span class="status" id="status"><span></span> READY</span>
+      </div>
+
+      <div class="timer-shell">
+        <svg class="progress-ring" viewBox="0 0 320 320" aria-hidden="true">
+          <circle class="ring-track" cx="160" cy="160" r="145" />
+          <circle class="ring-progress" id="ringProgress" cx="160" cy="160" r="145" />
+        </svg>
+        <div class="time-display" id="timeDisplay" role="timer" aria-live="polite">05:00</div>
+      </div>
+
+      <div class="controls">
+        <button class="secondary-button" id="resetButton" type="button" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4v6h6M5.5 15a7 7 0 1 0 .5-7l-2 2"/></svg>
+          リセット
+        </button>
+        <button class="primary-button" id="startButton" type="button">
+          <svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 7 8 5-8 5V7Z"/></svg>
+          <svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7v10M15 7v10"/></svg>
+          <span>スタート</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="settings" id="countdownSettings" aria-labelledby="settingsTitle">
+      <div class="section-heading">
+        <p class="eyebrow" id="settingsTitle">DURATION</p>
+        <p>集中する時間を選択</p>
+      </div>
+      <div class="presets" role="group" aria-label="時間プリセット">
+        <button class="preset active" data-minutes="5" type="button"><strong>05</strong><span>分</span></button>
+        <button class="preset" data-minutes="15" type="button"><strong>15</strong><span>分</span></button>
+        <button class="preset" data-minutes="25" type="button"><strong>25</strong><span>分</span></button>
+        <button class="preset" data-minutes="45" type="button"><strong>45</strong><span>分</span></button>
+      </div>
+      <form class="custom-time" id="customTimeForm">
+        <label for="customMinutes">カスタム</label>
+        <div class="input-wrap">
+          <input id="customMinutes" name="minutes" type="number" min="1" max="180" inputmode="numeric" placeholder="時間を入力" aria-describedby="minuteSuffix">
+          <span id="minuteSuffix">分</span>
+        </div>
+        <button type="submit">設定</button>
+      </form>
+    </section>
+
+    <p class="shortcut-hint"><kbd>Space</kbd> スタート / 一時停止 <span>·</span> <kbd>R</kbd> リセット</p>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
