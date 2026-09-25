@@ -6,3 +6,5 @@ image/timer.png
 Thumbs.db
 .vscode/
 .idea/
+
+.env
